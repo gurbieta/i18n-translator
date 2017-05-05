@@ -12,11 +12,13 @@ var i18n = {
 		[].unshift.call(args, text);
 		return this.tr.apply(this, args);
 	},
-	
+
 	tr : function (singular) {
 		if (!this.i18nMap) throw new Error("Not initialized");
 
-		var text = singular
+		if (!singular || !singular.length) return '';
+
+		var text = singular;
 		if (typeof(this.i18nMap) != 'undefined' && this.i18nMap[singular]) {
 			text = this.i18nMap[singular];
 		}
